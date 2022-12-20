@@ -8,26 +8,29 @@ import {Notify} from "notiflix";
 let username = "";
 let password = "";
 
-const LoginPage:NextPage = () => {
-    const login = async () => {
-        const response = await axios.post("/api/account", { order: "authentication", username, password }, { withCredentials: true });
+const RegisterPage:NextPage = () => {
+
+    const register = async () => {
+        const response = await axios.post("/api/account", {order: "register", username, password}, {withCredentials: true});
         if (response.data.success) {
-            window.location.href = "/internal";
+            window.location.href = "/authentication/login";
         } else {
-            Notify.failure("Failed to login! ", response.data.response);
+            Notify.failure("Something went really wrong");
         }
     }
 
-    return <section className={`${styles.mainPane}`}>
+    console.log("RUN");
+
+    return <section className={styles.mainPane}>
         <div className={`d-flex flex-column justify-content-center align-items-center ${styles.contentBox}`}>
-            <h2>Login</h2>
+            <h2>Register</h2>
 
             <input onChange={e => username = e.currentTarget.value} type={"text"} placeholder={"Username"} className={"mt-3 clickable"} />
             <input onChange={e => password = e.currentTarget.value} type={"password"} placeholder={"Password"} className={"mt-3 clickable"} />
-            <div onClick={login} className={"text-center clickable secondary mt-3 center"}>Login</div>
+            <div onClick={register} className={"text-center clickable secondary mt-3 center"}>Login</div>
 
         </div>
     </section>
 }
 
-export default LoginPage;
+export default RegisterPage;
