@@ -40,7 +40,7 @@ export default class AccountHandler {
 
     async verifyCookie(cookie:string) {
         if (!secret) {
-            throw new Error("No secret in .env!");
+            throw new Error("No secret in .env.example!");
         }
 
         try {
