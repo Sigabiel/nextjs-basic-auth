@@ -14,7 +14,7 @@ export default async function (req:NextApiRequest, res:NextApiResponse) {
 
         const response = await accHandler.verifyCredentials(username, password);
         if (!response) {
-            return res.status(401).json({ success: false, response: "Invalid credentials" });
+            return res.status(200).json({ success: false, response: "Invalid credentials" });
         }
 
         const cookieToken = sign({

@@ -1,7 +1,5 @@
-"use client";
-
 import {NextPage} from "next";
-import styles from "../../../styles/pages/Login.module.css";
+import styles from "../../styles/pages/Login.module.css";
 import axios from "axios";
 import {Notify} from "notiflix";
 
